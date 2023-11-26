@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Categoria</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <!-- <script src='main.js'></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<!-- <script>
+    // --------------------------------------------arquivo PHPlistaTabelaCategoria-----------------------------
+    function carregarArquivoPHP() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // O conteúdo retornado pelo arquivo PHP estará em this.responseText
+                    console.log(this.responseText);
+                }else{die('ppp');}
+            };
+            xhttp.open("GET", "listarTabelaCategoria.php", true);
+            xhttp.send();
+        }
+
+        // Chame a função ao carregar a página
+        window.onload = function() {
+            carregarArquivoPHP();
+        };
+
+// --------------------------------------------arquivo PHPlistaTabelaCategoria-----------------------------
+</script> -->
+
+<style>
+    body{
+        margin: 0px;
+        padding: 0px;
+        background-image: url(img.png);
+    }
+
+    #conteiner{
+        border: 1px solid white;
+        /* padding: 200px 200px 500px 800px; */
+        width: 1000px;
+        height: 650px;
+        margin-left: 20px;
+        border-radius: 10px; 
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    #cabecalho{
+        background-color: black; 
+        padding: 30px;
+        color: white;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: bold;
+        display: flex;
+        font-size: 14pt;
+    }
+
+    #cabecalho #logo{
+        margin-right: 910px;
+    }
+
+    #navegacao ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 170px;
+    }
+
+    #navegacao li {
+        margin-bottom: 60px; /* Espaçamento entre os itens da lista */
+    }
+
+    #navegacao a {
+        text-decoration: none;
+        padding: 20px 40px;
+        background-color: #3498dbb6;
+        color: #ffffff;
+        /* border-radius: 5px; */
+        transition: background-color 0.3s ease;
+        display: block; /* Torna os links de navegação em blocos para ocupar a largura total */
+        text-align: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        /* font-weight: bold; */
+        font-size: 14pt;
+    }
+
+    #navegacao a:hover {
+        background-color: #0f5b8d;
+    }
+
+    #corpo{
+        margin-top: 20px;
+        display: flex;
+	margin-left: 50px;
+    }
+
+    #conteiner img{
+        width: 100%;
+        height: 100%;
+    }
+
+
+/* -----------------------------------tabela-------------------------------------------------- */
+table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #0f5b8d;
+        }
+
+
+
+        tbody tr:hover {
+            background-color: #0f5b8d;
+        }
+
+        th {
+            background-color: #0f5b8d41;
+        }
+
+
+        #categoriaTxt,#novaTxt{
+            color: white;
+            /* margin-top: -300px;
+            margin-left: -860px;
+            margin-bottom: 100px; */
+            
+        }
+
+        #categoriaTxt{
+            /* margin-top: -200px; */
+            /* margin-bottom: 10px; */
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 30px;
+        }
+
+        #novaTxt{
+            margin-bottom: 20px;
+            background-color: #000000b6;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 20px;
+            padding: 15px;
+
+        }
+
+        #a {
+            margin-right: 600px; /* Adiciona espaçamento à direita de cada <span> dentro de #novaTxt */
+        }
+
+        #tabelaContainer {
+        max-height: 400px;
+        overflow-y: auto;
+        }
+
+        #tabelaCategorias {
+            max-height: 100px;
+            width: 100%; /* Usando 100% da largura do contêiner */
+            /* ... outros estilos da tabela ... */
+        }
+/* -----------------------------------/tabela-------------------------------------------------- */
+    
+
+/* -----------------------------botao Nova--------------------- */
+.new-button {
+    background-color: #4caf50; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    cursor: pointer;
+    border-radius: 5px; 
+
+}
+
+.new-button .icon {
+    font-weight: bold;
+}
+
+.new-button:hover{
+    background-color: #4caf4fc0;
+}
+/* -----------------------------botao--------------------- */
+
+
+/* ------------------------------------botao excluir e editar-------------------------- */
+
+
+.editar-button, .excluir-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-left: 75px;
+}
+
+.excluir-button {
+    background-color: #f44336;
+}
+
+.bt{
+    width: 180px;
+}
+
+.excluir-button:hover{
+    background-color: #f44336bb;
+}
+
+.editar-button:hover{
+    background-color: #4caf4fb9;
+}
+/* ------------------------------------botao excluir e editar-------------------------- */
+
+
+
+
+
+/* ==============================Modal===================================== */
+
+#modalOverlay {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo para o modal de formulário */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 58%;
+    top: 50%;
+    transform: translate(-50%, -50%); 
+    padding: 10px;
+    border: 1px solid #07a4b9;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%; 
+    height: 40%;
+    background-color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Estilo para o botão de fechar  */
+ .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+} 
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilo para o botão de formulário */
+.new-buttonModal {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 40%;
+}
+
+.new-buttonModal:hover {
+    background-color: #4caf4fc0;
+}
+
+#myModal{
+    color: white;
+}
+
+.modal-content{
+   background-color:#0f5b8d41;
+}
+/* ====================================/Modal==================================== */
+
+
+
+#form input{
+            display: block;
+            width: 100%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+            font-size: 15pt;
+            padding: 3px;
+            border-style: none;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            
+}
+
+
+
+</style>
+
+<body>
+    <!-- Cabecalho -->
+    <nav id="cabecalho">
+        <div id="logo">
+         <img src="LOGO_RM_HORIZONTAL.png" style="width: 140px; height: 50px;">
+        </div>
+        <div>
+            <a href="Login.html" style="color: rgb(236, 240, 7); text-decoration: none; margin-left: 300px;">Sair</a>
+        </div>
+     </nav>
+    
+    <!-- Menu de navegacao -->
+    <div id="corpo" style="margin-rigth:-50px;">        
+        <nav id="navegacao">
+            <ul>
+                <li><a href="index.html">Painel de Controlo</a></li>
+                <li><a href="Categoria.html">Categoria</a></li>
+                <li><a href="Tarefa.html">Tarefa</a></li>
+                           
+            </ul>
+        </nav>
+        
+        <div id="conteiner" style="justify-content: center; display: flex; align-items: center;">  
+            <div id="categoriaTxt" style="width: 900px;" >
+                <span>Categoria</span>
+            </div>
+
+            <div id="novaTxt" style="width: 900px;">
+                <span id="a">Lista de Categorias</span>
+                <button class="new-button" id="openModalBtn">
+                    <span class="icon" style="margin-right: 5px;">+</span>Nova
+                </button>
+            </div>
+
+            <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; height: 500px;">   
+            <table id="tabelaCategorias" style="width: 900px; height: auto;" >
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Categoria</th>
+                            <th>Criado em</th>
+                            <th>Actualizado em</th>
+                            <th>Tarefas</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaBody">
+                        
+                    </tbody>
+                </table>
+            </div> 
+            </div>
+
+        <!-- ------------------------------Modal---------------------------------------- -->           
+            <div id="modalOverlay"></div>
+            <div id="myModal" class="modal"  style="margin-top:100px; height: 340px;">
+                <div class="modal-content" style="background-color: black;">
+                    <span class="close">&times;</span>
+                    <h2 style="text-align: center; margin-bottom: 30px;">Nova Categoria</h2>
+                    <form id="form" action="http://localhost/Gestao_de_Tarefas/save_categoria.php" method="POST">
+                        <label >Categoria:</label>
+                        <input type="text" id="categoriaInput" name="categoria" required><br><br>
+                        <button type="submit" class="new-buttonModal" name="salvar">Salvar</button>
+                    </form>
+                </div>
+            </div>   
+    <!-- ----------------------------------/Modal------------------------------------------>
+    <script>
+        var modal = document.getElementById("myModal");
+        var overlay = document.getElementById("modalOverlay");
+        var btnModalCategoria = document.getElementById("openModalBtn");
+        var span = document.getElementsByClassName("close")[0];
+
+        btnModalCategoria.onclick = function() {
+            modal.style.display = "block";
+            overlay.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+            overlay.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == overlay) {
+                modal.style.display = "none";
+                overlay.style.display = "none";
+            }
+        }
+// ------------------------------------PrencherOs dados-------------------------------------
+$(document).ready(function () {
+    $.ajax({
+        url: 'http://localhost/Gestao_de_Tarefas/listarTabelaCategoria.php',
+        type: 'GET',
+        dataType: 'html',
+        success: function (response) {
+            $('#tabelaBody').html(response);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+});
+
+// ------------------------------------/PrencherOs dados-------------------------------------
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('conteiner').addEventListener('click', function (event) {
+            if (event.target && event.target.classList.contains('excluir-button')) {
+                var codigoCategoria = event.target.getAttribute('data-codigo');
+    
+                if (confirm("Deseja realmente excluir a categoria?")) {
+                    var xhr = new XMLHttpRequest();
+                    // Configurar uma requisição DELETE assíncrona
+                    xhr.open('DELETE', 'http://localhost/Gestao_de_Tarefas/save_categoria.php', true);
+
+                    // Configurar o cabeçalho da requisição
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+
+                    // Configurar a função de retorno de chamada quando a requisição estiver concluída
+                    xhr.onload = function () {
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            // A requisição foi bem-sucedida
+                            console.log('Categoria excluída com sucesso!');
+                            // Aqui você pode atualizar a tabela ou fazer outras ações necessárias
+                        } else {
+                            // Houve um erro na requisição
+                            console.error('Erro ao excluir categoria: ' + xhr.statusText);
+                        }
+                    };
+
+                    // Configurar a função de retorno de chamada para lidar com erros de rede
+                    xhr.onerror = function () {
+                        console.error('Erro de rede ao excluir categoria.');
+                    };
+
+                    // Enviar a requisição com o código da categoria como parâmetro
+                    var data = { codigo_categoria: codigoCategoria }; // Ajuste aqui
+                        xhr.send(JSON.stringify(data)); // Ajuste aqui
+                    }
+            }
+            });
+        });
+// ----------------------------------------Exluir---------------------------------------------
+
+// ---------------------------------------/Exluir---------------------------------------------
+
+        function excluirLinha(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+ </script>  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
+</body>
+</html>

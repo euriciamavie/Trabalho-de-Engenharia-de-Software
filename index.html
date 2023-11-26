@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Inicio</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<style>
+    body{
+        margin: 0px;
+        padding: 0px;
+        background-image: url(img.png);
+    }
+
+    #conteiner{
+        border: 1px solid white;
+        /* padding: 200px 200px 500px 800px; */
+        width: 1000px;
+        height: 650px;
+        margin-left: 50px;
+        border-radius: 10px; 
+        overflow: hidden;
+    }
+
+    #cabecalho{
+        background-color: black; 
+        padding: 30px;
+        color: white;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: bold;
+        display: flex;
+        font-size: 14pt;
+    }
+
+    #cabecalho #logo{
+        margin-right: 910px;
+    }
+
+    #navegacao ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 170px;
+    }
+
+    #navegacao li {
+        margin-bottom: 60px; /* Espaçamento entre os itens da lista */
+    }
+
+    #navegacao a {
+        text-decoration: none;
+        padding: 20px 40px;
+        background-color: #3498dbb6;
+        color: #ffffff;
+        /* border-radius: 5px; */
+        transition: background-color 0.3s ease;
+        display: block; /* Torna os links de navegação em blocos para ocupar a largura total */
+        text-align: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        /* font-weight: bold; */
+        font-size: 14pt;
+    }
+
+    #navegacao a:hover {
+        background-color: #0f5b8d;
+    }
+
+    #corpo{
+        margin-top: 20px;
+        display: flex;
+	margin-left:50px;
+    }
+
+    #conteiner img{
+        width: 100%;
+        height: 100%;
+    }
+   
+</style>
+
+<body>
+    <!-- Cabecalho -->
+    <nav id="cabecalho">
+       <div id="logo">
+        <img src="LOGO_RM_HORIZONTAL.png" style="width: 140px; height: 50px;">
+       </div>
+       <div>
+            <a href="Login.html" style="color: rgb(236, 240, 7); text-decoration: none; margin-left: 300px;">Sair</a>
+       </div>
+    </nav>
+    
+    <!-- <nav class="navbar navbar-dark bg-dark fixed-top" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" >
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="#">Utilizador: </a>
+        </div>
+    </nav> -->
+    
+    <!-- Menu de navegacao -->
+    <div id="corpo">        
+        <nav id="navegacao">
+            <ul>
+                <li><a href="index.html">Painel de Controlo</a></li>
+                <li><a href="Categoria.html">Categoria</a></li>
+                <li><a href="Tarefa.html">Tarefa</a></li>           
+            </ul>
+        </nav>
+
+        <div id="conteiner">  
+            <img src="Dash.jpg"> 
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
